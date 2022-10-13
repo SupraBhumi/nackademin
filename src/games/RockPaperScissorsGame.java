@@ -11,7 +11,7 @@ public class RockPaperScissorsGame {
 
     //konstruktur
 
-
+    //@TODO: if the constructor is not declared as public it will not be able to call it from outside of the package
     RockPaperScissorsGame(String playerName, int playerScore) {
         player = new Player();
         aIFist = new Fist();
@@ -37,6 +37,8 @@ public class RockPaperScissorsGame {
 
             Scanner scanner = new Scanner(System.in);
             String[] rps = {"Rock", "Paper", "Scissors"};
+
+            //@TODO: call the method Fist.play() instead
             String stringResult = rps[new Random().nextInt(rps.length)];
             String choice;
 
