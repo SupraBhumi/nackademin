@@ -55,7 +55,7 @@ public class RockPaperScissorsGame {
                 System.out.println(choice + " is not a valid move, please choose Rock, Paper or Scissors");
             }
 
-
+//
             System.out.println("Computer play : " + stringResult);
 
             if (choice.equalsIgnoreCase(stringResult)) {

@@ -23,6 +23,7 @@ public class Player {
         this.score = score;
     }
 
+
     public int getScore(){
         return this.score;
     }
