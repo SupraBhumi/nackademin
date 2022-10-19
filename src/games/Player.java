@@ -29,22 +29,32 @@ public class Player {
 
     //den ska visa i main klass (utifrån setPlayer raden)
     //@FIXME: by convention this method should be called toString with annotation @Override
+
+/*
     public void displayPlayer(){
         System.out.println("Name : " + this.name + ", Score : " + this.score);
     }
 
+ */
 
     public String getName(){
+
         return name;
     }
 
-    public void rageQiut(){System.exit(0);}
+    //public void rageQiut(){System.exit(0);}
 
     //@FIXME: duplicate, choose one of them and delete the other
+
+         @Override
         public String toString(){
-            return "Name: " + this.name + ", score" + this.score;
+            //return "Name: " + this.name + ", score" + this.score;
+             System.out.println("Name : " + this.name + ", Score : " + this.score);
+             return this.name;
 
     }
+
+
 }
 
 

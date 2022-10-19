@@ -5,14 +5,14 @@ import java.util.Scanner;
 
 public class RockPaperScissorsGame {
 
-    boolean playerWins = false;
+    boolean playerWins;
     Player player;
     Fist aIFist;
 
     //konstruktur
 
     //@TODO: if the constructor is not declared as public it will not be able to call it from outside of the package
-    RockPaperScissorsGame(String playerName, int playerScore) {
+    public RockPaperScissorsGame(String playerName, int playerScore) {
         player = new Player();
         aIFist = new Fist();
 
@@ -20,7 +20,8 @@ public class RockPaperScissorsGame {
         player.setPlayer("Supra");
         player.setScore(0);
         //anropa den utvalda variable (this.name/ this.score..) utifrån setPlayer som kommer visa på main klass
-        player.displayPlayer();
+       // player.displayPlayer();
+        player.toString();
     }
 
     public static void main(String[] args) {
@@ -31,15 +32,18 @@ public class RockPaperScissorsGame {
     }
 
 
-    void playGame() {
+     void playGame() {
 
         while (true) {
 
             Scanner scanner = new Scanner(System.in);
-            String[] rps = {"Rock", "Paper", "Scissors"};
+
 
             //@TODO: call the method Fist.play() instead
-            String stringResult = rps[new Random().nextInt(rps.length)];
+          String[] rps = {"Rock", "Paper", "Scissors"};
+          String stringResult = rps[aIFist.play()/*new Random().nextInt(rps.length)*/];
+          //Fist.play();
+
             String choice;
 
             while (true) {
@@ -54,12 +58,13 @@ public class RockPaperScissorsGame {
 
             System.out.println("Computer play : " + stringResult);
 
-
             if (choice.equalsIgnoreCase(stringResult)) {
-                System.out.println("The game was a tie!");
+                    System.out.println("The game was a tie!");
+                    playerWins = false;
             } else if (choice.equalsIgnoreCase("Rock")) {
                 if (stringResult.equalsIgnoreCase("Paper")) {
                     System.out.println("You lost");
+                    playerWins = false;
                 } else if (stringResult.equalsIgnoreCase("Scissors")) {
                     System.out.println("You win!");
                     playerWins = true;
@@ -67,6 +72,7 @@ public class RockPaperScissorsGame {
             } else if (choice.equalsIgnoreCase("Scissors")) {
                 if (stringResult.equalsIgnoreCase("Rock")) {
                     System.out.println("You lost");
+                    playerWins = false;
                 } else if (stringResult.equalsIgnoreCase("Paper")) {
                     System.out.println("You win!");
                     playerWins = true;
@@ -74,21 +80,24 @@ public class RockPaperScissorsGame {
             } else if (choice.equalsIgnoreCase("Paper")) {
                 if (stringResult.equalsIgnoreCase("Scissors")) {
                     System.out.println("You lost");
+                    playerWins = false;
                 } else if (stringResult.equalsIgnoreCase("Rock")) {
                     System.out.println("You win!");
                     playerWins = true;
                 }
-
-                if (playerWins){
-                    player.setScore(player.getScore() +1);
-                }
-
             }
-            System.out.println("Player score is : " + player.getScore());
-            System.out.print("Play agian? (yes/no) : ");
-            String playAgian = scanner.nextLine();
 
-            if (!playAgian.equalsIgnoreCase("Yes")) {
+            if (playerWins==true){
+                player.setScore(player.getScore() +1);
+            }
+
+
+
+            System.out.println("Player score is : " + player.getScore());
+            System.out.print("Play again? (yes/no) : ");
+            String playAgain = scanner.nextLine();
+
+            if (!playAgain.equalsIgnoreCase("Yes")) {
                 break;
             }
 
